@@ -17,7 +17,6 @@
                 // 添加事件监听者
                 // 参数一 : 需要监听的事件
                 // 参数二 : 监听到事件后需要执行的操作
-                console.log(document.readyState);
                 document.addEventListener("DOMContentLoaded", fn);
             } else if (document.attachEvent) {
                 // 状态没变化一次就会来到这个方法,总共会来四次

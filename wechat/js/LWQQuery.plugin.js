@@ -227,13 +227,22 @@ $.fn.extent({
             });
             return this;
         }
-    },
+    }
+});
+
+
+
+
+/**
+ * jQuery样式操作
+ */
+$.fn.extent({
     hasClass : function (str) {
         if (this.isString(str)){
             var flag = false;
             var strArr = [];
             this.each(function () {
-                strArr = this.getAttribute("class").split(" ");
+                strArr = this.className.split(" ");
                 if (strArr.indexOf(str) != -1){
                     flag = true;
                     return false;
@@ -244,7 +253,59 @@ $.fn.extent({
             return false;
         }
     },
-    add : function (){
-
+    addClass:function (classT) {
+        //(1) 先判断是否传递了字符串参数,如果传递了字符串参数,那么:
+        if($.isString(classT))
+        {
+            //① 把字符串传参数切割成数组
+            var classArray = classT.indexOf(" ") != -1 ? classT : classT.split(" ");
+            //② 遍历数组,判断每个标签
+            for(var i = 0;i<classArray.length;i++)
+            {
+                var classStr = classArray[i];
+                //③ 遍历实例对象,检查每一个标签
+                this.each(function () {
+                    if (!$(this).hasClass(classStr)){
+                        this.className = $.trim(this.className + " " + classStr);
+                    }
+                })
+            }
+        }
+        //(2) 如果没有传递参数或者是传递的参数不是字符串,返回实例对象
+        return this;
+    },
+    removeClass : function (str){
+        if (arguments.length == 0){
+            this.each(function (){
+                this.className = "";
+            })
+        }else {
+            if (this.isString(str)){
+                str = " " + str + " ";
+                if (this.hasClass(str)){
+                    this.className.replace("str"," ");
+                }
+            }
+        }
+        return this;
+    },
+    toggleClass : function (str){
+        if (arguments.length == 0){
+            this.removeClass();
+        }else {
+            // 由于hasClass不支持多个类名的情况
+            // 现将str转化为字符串
+            str = str.split(" ");
+            this.each(function () {
+                // 遍历字符串->分别判断即可
+                for (var i=0;i<str.length;i++){
+                    if (!$(this).hasClass(str[i])){
+                        $(this).addClass(str[i]);
+                    }else {
+                        $(this).removeClass(str[i]);
+                    }
+                }
+            });
+        }
     }
 });
