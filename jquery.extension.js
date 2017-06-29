@@ -1,13 +1,12 @@
-/**
- * Created by W-Q on 2017/6/29.
- */
 /*!
- * jQuery Color Animations v@VERSION
- * https://github.com/jquery/jquery-color
+ * jQuery Extension v@VERSION
+ * https://github.com/codeLittleNewbie/jquery.extentsion.git
+ *
+ * Created by W-Q on 2017/6/29.
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the Apache2.0 license.
- * http://jquery.org/license
+ * http://www.apache.org/licenses/
  *
  * Date: @DATE
  */
